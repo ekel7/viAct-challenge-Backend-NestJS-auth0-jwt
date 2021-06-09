@@ -136,7 +136,7 @@ Users are saved in the Auth0 database and in a local database(mongoDB)
 
 ### User Information (token verification)
 
-Now, to see the user info, you need to use your token with the Bearer prefix in Postman. 
+Now, to see the user info, you need to use your token as an authentication header with the Bearer prefix in Postman. 
 Then make a GET request to `http://localhost:3000/users/profile`.
 
 You should get an object similar to this:
