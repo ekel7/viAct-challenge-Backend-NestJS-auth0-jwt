@@ -21,6 +21,17 @@ AUTH0_CONNECTION={your Auth0 database name configured to your client}
 
 A template `.env` file can be found at [`.env.example`](.env.example).
 
+Alternatively, these values can be used for testing:
+
+```
+AUTH0_DOMAIN=dev-v3piv5-6.us.auth0.com
+AUTH0_CLIENT_ID=wlZiBS99sonkg0aaCof1WSNZ19wvTxDs
+AUTH0_CLIENT_SECRET=6SxL9mmKGFJi_u4DSoKaP-24NfCguDz6bSVhOB6kYBPTnMxR_SuaHZ0oZyYmfFQ3
+AUTH0_AUDIENCE=http://localhost:3000
+AUTH0_CONNECTION=Username-Password-Authentication
+
+```
+
 
 
 ## Installation
@@ -48,7 +59,7 @@ $ npm run start:dev
 To login, once the project is running, you must enter the following URL in the browser:
 
 ```
-localhost:3000/auth/login
+http://localhost:3000/auth/login
 
 ```
 
@@ -58,11 +69,13 @@ Once you are logged in, you'll get your token and you can use it to make request
 
 To register a user, you can do so by sending an object through Postman with this structure:
 
+URL: `http://localhost:3000/auth/register`
+
 
 ```
 {
 	"email":"elema4@gmail.com",
-	"password":"Password_11",  //Must contain Uppercase letter, lowercase letter, special symbol and a number!
+	"password":"Password_11",  //Must contain Uppercase letter, lowercase letter, special symbol and a number(8+ digits)!
 	"name":"ema",
 	"nickname":"what"
 }
