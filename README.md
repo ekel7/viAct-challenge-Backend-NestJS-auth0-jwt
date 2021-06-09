@@ -50,6 +50,44 @@ $ npm run start:dev
 
 ```
 
+#### In case you have this error:
+
+```bash
+[4:18:00 AM] Starting compilation in watch mode...
+
+node_modules/@nestjs/platform-express/adapters/express-adapter.d.ts:2:23 - error TS2305: Module '"../../common/interfaces/external/cors-options.interface"' has no exported member 'CorsOptionsDelegate'.
+
+2 import { CorsOptions, CorsOptionsDelegate } from '@nestjs/common/interfaces/external/cors-options.interface';
+                        ~~~~~~~~~~~~~~~~~~~
+
+[4:18:09 AM] Found 1 error. Watching for file changes.
+
+
+
+
+```
+
+You need to edit a broken import in this directory: `node_modules\@nestjs\platform-express\adapters\express-adapter.d.ts`
+
+In line 2, please delete the `CorsOptionsDelegate`
+
+The imports should look like this:
+
+```
+import { RequestMethod } from '@nestjs/common';
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
+import { NestApplicationOptions } from '@nestjs/common/interfaces/nest-application-options.interface';
+import { AbstractHttpAdapter } from '@nestjs/core/adapters/http-adapter';
+import { ServeStaticOptions } from '../interfaces/serve-static-options.interface';
+export declare class ExpressAdapter extends AbstractHttpAdapter {
+    private readonly routerMethodFactory;
+    constructor(instance?: any);
+    
+    ...........
+```
+
+
+Now the API will run normally.
 
 
 ## Explanation
