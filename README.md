@@ -87,6 +87,17 @@ export declare class ExpressAdapter extends AbstractHttpAdapter {
 ```
 
 
+And in line 29:
+
+```
+    enableCors(options: CorsOptions ): any;
+    createMiddlewareFactory(requestMethod: RequestMethod): (path: string, callback: Function) => any;
+    initHttpServer(options: NestApplicationOptions): void;
+    registerParserMiddleware(): void;
+
+```
+
+
 Now the API will run normally.
 
 
